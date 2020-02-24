@@ -21,14 +21,17 @@
         //4 broad categories - that are equal, intertwined, and build on top of one another
             //1.Underlying/foundational knowledge
                 //These basics are needed. Gaps will severely handicap you
+                
             //2.Key characteristics of systems
                 //Things you want a system to have
                 //Things that have a trade-off
                     //e.g. Availability/Throughput/Redundancy/Consistency
+
             //3.Actual components of the system
                 //More tangible things you have in a system
                 //The key components that allow your system to have the key characteristics of your system
                     //e.g. load balancers/proxies/caches/rate limiting/leader election
+
             //4.Actual implementable technology for your components
                 //Real existing products or services you can use in a system
                 //To use as a component and/or use to achieve certain characteristics 
