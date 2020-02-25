@@ -85,6 +85,33 @@
                             //It is very possible that the packets will get lost/dropped. And no gurantee the packets will reach their destination
                             //We're also not guranteeing order that the packets will be interpreted/read 
                             //Thus IP by itself has its short comings
+                            //These shortcomings solved by TCP 
+
             //TCP - transmission control protocol
                 //Built on top of IP
-                    //Meant to send IP packets in an ordered way 
+                    //Meant to send IP packets in an ordered way - guranteeing the packets are read by the destination machine in an ordered way
+                    //And ensures packet viability - 
+                    //e.g. if packets are corrupted or don't reach their destination, the protocol will know
+                    //TCP increases reliability of packet transmission across the network
+                    //If packets get corrupted/fail to reach their destination, you will know
+                    //And be able to ensure resending of those packets 
+
+                    //TCP solves these issues and allows sending of arbitrarily long pieces of data to other machines
+                    //Does things that the IP cannot resolve by itself
+                    //TCP used in virtually all webapps
+
+                    //How TCP works on a high-level
+                        //In the data portion of the IP packet, there exists:
+                            //TCP header - includes information about the TCP part of the packet 
+                                //includes ordering of the packets 
+                            //rest of the data portion
+                        //TCP handshake
+                            //Is a connection between the client and destination server 
+                            //A special TCP interaction where one machine contacts the other by send a packet(s) that initiate a connection
+                            //The other machine says ok
+                            //Client machine responds saying we are connected 
+
+                            //Once the connection is established, both machines 
+
+                            //One computer sends a few packets to indicate they want to connect 
+                    //15:40
