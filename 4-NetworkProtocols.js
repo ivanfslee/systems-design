@@ -41,4 +41,50 @@
     //What is a protocol?
         //An agreed upon group of rules and procedures for an interaction between 2 parties
         //e.g. Protocol for human interaction when you bump into them in the hallway
-        //2:42
+    
+    //Client-Server Model + Network Protocols
+        //Basically, client and server communicate with one another using network protocols
+            //Network Protocol includes:
+                //The kinds of messages that are sent between the machines (client and server)
+                //The format of messages
+                //The order of the messages if there is an order
+                //A response to the messages if it is needed 
+        //There are alot of different network protocols out there, the majority of which
+            //in the context of systems design interview, you don't need to know about
+            //The most important of which include:
+                //IP
+                //TCP
+                //HTTP
+    
+    //Internet Protocol 
+        //Same IP in IP Address - 'Internet Protocol Address'
+        //The modern internet effectively runs on IP
+
+        //When clients and servers send data between one another
+            //They send what is known as 'ip packet'
+            //Think of the IP packet as the fundamental unit of data that is send from one machine to another
+            //IP Packets are made up of bytes
+            //Ip packets have 2 main parts
+                //1. IP header - at the beginning of the packet
+                    //Header is typically small - Total size of header roughly 20 - 60 bytes
+                    //Contains useful information about the packet
+                        //Source IP address - ip address of machine the packet is coming from
+                        //Destination IP address - ip address of machine packet is going to 
+                            //Important point here is the source/destination ip address is how the information flows on the internet
+                        //Total size of packet
+                        //Version of IP it is using 
+                            //There are multiple versions of the IP, today 2 common versions 
+                                //1. IPv4 - most common
+                                //2. IPv6 - used more and more
+            
+                //2. Data - where the data going from one machine to the other is stored
+                    //Ip packets are limited in size
+                        //Up to 2^16 bytes = 65,000 bytes = 0.065 megabytes
+                        //Typically if you are sending email/image/etc - that will not fit in one packet 
+                        //Thus, you will have multiple IP packets 
+                            //It is very possible that the packets will get lost/dropped. And no gurantee the packets will reach their destination
+                            //We're also not guranteeing order that the packets will be interpreted/read 
+                            //Thus IP by itself has its short comings
+            //TCP - transmission control protocol
+                //Built on top of IP
+                    //Meant to send IP packets in an ordered way 
