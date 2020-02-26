@@ -39,3 +39,46 @@
         //Typically refers to disk, but in general is any form of storage that persists
         //if the process in charge of managing it dies.
 
+//Any system typically needs storage
+    //Database serves 2 purposes
+        //1. Store data /reading/setting/record
+        //2. Retrieve data /writing/getting/query
+    //Common gap in knowledge
+        //Thinking that a database is some nebulous box that exists in the ether 
+        //Which is a limited understanding of a database
+
+        //All a database is, is a server
+        //The machine you are on right now could be used as a database 
+        //Then all you do is set up so that other computers (clients) can communicate with your machine (database)
+        //By writing and reading data to it 
+    
+    //Persistence
+        //persistence of the data you store in the database
+        //People tend to assume that your data is okay, even after power outages, shutdowns
+            //This assumption is fair
+            //But isnt always correct 
+        
+        //Disk vs. Memory 
+            //If your data writes to disk
+                //That data will persist after shutdowns/system crashes
+            
+            //If your data writes to memory 
+                //Why use memory over disk?
+                    //Reading and writing to memory is much faster than reading and writing to disk
+                //data written to memory will NOT persist after shutdowns/crashes 
+    
+    //There are hundreds of DB offerings 
+        //On google cloud platform alone there are 8 database options to choose from 
+        //Storage is very complicated
+        //We just scratched the surface here
+
+        //Alot of different things db can offer 
+            //e.g. relational - structure of how data is stored 
+            //e.g. availability - uptime of your system 
+            //e.g. distributed storage - multiple machines store database
+                //split the data across multiple machines?
+                //replicate the data across multiple machines?
+                //consistency of the data - staleness or up to date data?
+        
+        
+        
