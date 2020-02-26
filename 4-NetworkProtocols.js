@@ -111,7 +111,87 @@
                             //The other machine says ok
                             //Client machine responds saying we are connected 
 
-                            //Once the connection is established, both machines 
+                            //Once the connection is established, both machines can freely send data to one another
 
-                            //One computer sends a few packets to indicate they want to connect 
-                    //15:40
+                            //If one of the machines doesn't get data in a certain time period, it can get timed out
+                            //If one of the machines wants to end the connection, they can do so by sending a packet indicating they want to end the connection
+                //Basically, TCP is a more powerful and more functional wrapper around IP
+
+                //What it lacks is a more robust framework
+                    //TCP is just sending data in the packet
+                
+            //HTTP - built on top of TCP
+                //introduces a higher level of abstraction
+                //Request/response paradigm
+                    //One machine sends a request to another machine 
+                    //The second machine returns a response
+
+                //This allows developers to develop robust and easy to maintain systems 
+                    //And this is why most modern day systems use http protocol for communication
+                    //HTTP - we forget about IP packets, TCP 
+                    //All that we deal with are HTTP requests and responses 
+
+                    //Requests are sent - they have properties defined by http protocol
+                        //Think of requsts/response as objects
+                            //Objects has fields/properties that descript thme and corresponding values 
+
+                        //e.g. Http request example
+                        const httpRequest = {
+                            host: 'localhost', //host and port describe destination server 
+                            port: 8080,
+                            method: 'POST', //GET (retrieve data),POST (provide data to server) PUT, DELETE (ask server to delete data), etc - describe the purpose of the http request
+                            path: '/payments', //server might have multiple paths. Clients interact with these paths differently. There is associated logic depending on each path 
+                                                //e.g. GET request to /payments path - gets payment information from server
+                                                //e.g. POST request to /payments path - initiate a payment to server 
+                            headers: { //collection of key-value pairs that contain important metadata about the request
+                                'content-type': 'application/json', //defines the type of the body - as JSON in this case
+                                'content-length': 51, //the length of the body
+                            },
+                            body: '{"data": "This is a piece of data in JSON format."}' //body - is the data we are sending to the server
+                        }
+
+                        //e.g. Http response example
+                        const httpResponse = {
+                            statusCode: 200, //describe the type of response this is. Specific status codes mean a certain thing
+                                            //e.g. 404 - requested piece of data was not found
+                                            //e.g. 403 - forbidden, you don't have permission to access
+                            headers: {
+                                'access-control-allow-origin': 'https://www.algoexpert.io',
+                                'content-type': 'application/json',
+                            },
+                            body: '{}'
+                        }
+
+                        //e.g. sample server using Express
+                        const express = require('express');
+                        const app = express();
+                        
+                        app.use(express.json()); //configuire it to accept JSON as data format of request bodies 
+
+                        app.listen(3000, () => console.log('Listening on port 3000')); //server will listen to port 3000
+
+                        //HTTP allows logic to occur once requests are received
+                        //Here there is some simple logic for a get request
+                        app.get('/hello', (req, res) => { //get endpoint at /hello
+                            console.log('Headers:', req.headers); //console log headers of the request
+                            console.log('Method:', req.method); //console log method of the request
+                            res.send('Received GET request'); //return response is a string that says we got the request
+                        });
+                        
+                        //HTTP allows logic to occur once requests are received
+                        //Here there is some simple logic for a post request
+                        app.post('/hello', (req, res) => { //post endpoint at /hello
+                            console.log('Headers:', req.headers); 
+                            console.log('Method:', req.method);
+                            console.log('Body:', req.body); //console log body of the request 
+                            res.send('Received POST request');
+                        });
+                        
+                //Summary:
+                //IP and TCP - transfers data
+                    //low level
+                    //probably won't interact with it too much as a SWE
+
+                //HTTP - introduces opportunity to add business logic - to build some type of complicated system
+                        
+                        
