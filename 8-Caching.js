@@ -178,7 +178,65 @@
                         //You will lose data. Though, there are some ways to mitigate that.
             
     //Design Youtube Comment Section System
-    
-    
+        //We have a bunch of servers that cache the comments for a single video in-memory
+        //We have a bunch of clients that will make a network request to the corresponding server to access the comments for the video 
+
+        //Caches can become 'stale' if they haven't been updated 
+        //That is, the caches have data that is older and not up to date
+
+        //If comments for a video become stale 
+        //That is, if some user1 updates their comment
+        //But for other users2, they are seeining user1's old, un-updated comment 
+        //That is a problem 
+        
+        //Other data, is okay to be 'stale'
+            //e.g. view counts on a video 
+            //If a user sees a stale view count on a video, that isn't that bad 
+
+    //So you have to design the system in a way to keep in mind the requirements and features
+        //Some things we care if certain data is stale or not - e.g. comments and posts
+
+        //Other things, we don't care if data is stale - e.g. view counter accuracy 
+
+    //Summary:
+        //Caching is great. But it has some pitfalls, so you have to address those pitfalls. 
+
+        //In general if the data you are dealing with is static data, or immutable data - (e.g. questions list on algoexpert)
+        //The data doesn't change all that often or it seldom changes or never changes
+        //Then caching works very well in those instances
+
+        //But if you are dealing with data that is mutable, then caching will be tricky
+        //Because you will have multiple locations where the data exists, the cache and the database
+        //You have to make sure the data in these places become in-sync
+        //otherwise, the data will become stale in some places 
+        //and depending on your use case, that may lead to some problems 
+
+        //Rule of thumb:
+            // Consider using caching if you are storing immutable/static data
+            // If you have a single thing reading or writing that data, consider caching (e.g. a single users account on algoexpert)
+            // Once you have multiple things reading and writing the data, caching might not be the best idea (e.g. multiple users commenting on a video)
+
+            //If you don't care about consistency/staleness of data, you can consider caching 
+            //Or if you can design your system to deal with the stale data in your cache, then caching could be considered
+
+        //Eviction policies with caches 
+            //There is a finite amount of space - you can't store everything in a cache 
+            //Other times, you have stale data in your cache and you need to get rid of the stale data
+
+            //What are the policies of how do we get rid of data in caches? 
+                //A few popular policies:
+                    //LRU - least recently used
+                        //get rid of least recently used pieces of data in a cache 
+                        //You need a way to track what is the least recently used piece of data
+                        //we make the presumption that the LRU data is most likely not relevant anymore
                     
+                    //Least frequently used
+                        //get rid of data that is accessed the least 
                     
+                    //LIFO or FIFO
+                        //Last in first out or first in first out 
+
+                    //Many different policies/ways to evict data out of the cache
+                    //That all depends on your use cases 
+                    //You would have to talk to your interviewer about what features are valued
+                    //So you can determine what policy to implement for cache eviction
