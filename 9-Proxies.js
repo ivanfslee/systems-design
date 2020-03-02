@@ -46,4 +46,16 @@
         //This is a way to access website that would otherwise be unaccessible to the client
             //e.g. certain countries/organizations stop the client from accessing their servers
             //but the proxy hides the client's identity
-            //5:53
+    
+    //Reverse Proxies 
+        //Reverse Proxies act on behalf of a server in an interaction between a client and a server
+        //Forward Proxies act on behalf of a client in an interaction between a client and a server
+
+        //Client want to interact with the server
+        //If the Reverse Proxy is configured properly, 
+        //The client's request will instead go to the Reverse Proxy (instead of the server)
+
+        //The client will not know that the request went to a reverse proxy
+        //The client will just think that the request went to its intended destination server
+        //705
+        
