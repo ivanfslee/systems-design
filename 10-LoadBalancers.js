@@ -62,12 +62,66 @@
         //Job is to balance workload across resources 
         //In this example, job is rerouting traffic in the form of client requests to the servers in a balanced/preconfiguired way
 
-    //Client
-    //5:30
+    //All Client requests route to Load Balancer
+    //Load Balancer will reroute client requests to servers in a balanced/preconfiguired way
 
+    //Client                     Server 
+    //Client -> Load Balancer -> Server
+    //Client                     Server
 
+    //Advantages:
+        //Throughput of system increases - underutilized servers can do their job better
+        //Latency is lower
+        //Better uses of resources - new servers added can process requests given to them from the load balancer
+    
+    //Most of the time you can think of the load balancer as a reverse proxy
+        //Because LB sit in between client and server 
+        //And LB act on behalf of the servers 
 
+    //Load Balancers can act on different layers of your system
+        //1. Between Client and Server
+        //2. Between Server and databases
+        //3. LB at the DNS layer - DNS query is made - DNS round-robin technique 
+            //DNS round-robin - A type of load balancing that occurs at the DNS layer 
+                //A single domain name gets multiple ip addresses
+                //When a dns query is made to the domain name
+                //The ip address that is returned, will be made in a load balanced way
+    
+    //How does the Load Balancer distribute the load?
+        //Different types of Load Balancers - both are pretty different from one another 
+            //Software LB - you can do more with software LB such as customization and scaling
+            //Hardware LB - physical machines dedicated to load balancing - you are limited by the hardware you are given with hardware load balancers
+    
+    //We will focus on Software LB
+    
+    //How does LB know about the amount of servers?
+        //Server-Selection Strategy
 
+        //The servers connected to the load balancer are configuired by those in charge of the system
+        //Registering/deregistering servers to the LB
 
+        //How does LB distributing work?
+            //Randomly - you can configuire your LB to redirect all traffic to your servers in a random order
+                //Could cause problems because one server by chance could get overloaded
+            
+            //Round-Robin approach - goes through all servers in order and then it repeats that order
+                //Sort of gurantees an even distribution of traffic across your servers
+            
+            //Weighted Round Robin - you would have an order of servers
+                //but each server is weighted differently
+                //A particular server could be redirected more traffic than others if it is weighted a little more higher
+                //You may want to do this if one of your servers is more powerful than the others
+                //So you want to route more traffic to that particular server since it can handle more requests 
+            
+            //Performance/Load monitoring approach
+                //Load Balancer assesses a 'load check' on your servers to see how many requests your servers are handling 
+                    //How much traffic a server is handling
+                    //How long a server is taking to respond to requests
+                    //How much resources a server is using 
 
+                    //Based on some criteria, LB will route requests accordingly 
 
+                    //e.g. LB sees that a particular server is handling traffic really well, whereas other servers are being overloaded
+                        //LB will then route more traffic to that server
+            
+            //IP based server selection strategy
