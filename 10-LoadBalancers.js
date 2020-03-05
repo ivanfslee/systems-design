@@ -125,3 +125,45 @@
                         //LB will then route more traffic to that server
             
             //IP based server selection strategy
+                //When LB gets ip address of the client, it will hash the ip address
+                //depending on the hash value, it will redirect to particular server
+
+                //Useful, if you are caching the results of the requests in your servers
+                //Then the response is cached as well and the server can serve it up to client more quickly
+
+                //Can help to maximize your cache hits 
+                //You may have cached the clients request in the server before hand
+                //So when that same client requests again, the load balancer can route the request to the 
+                //same server that cached the clients request before
+
+            //Path based server selection strategy
+                //LB distributes requests to servers according to the path of the request
+                //They use this on algoexpert
+
+                //They distribute requests to some servers according to their path
+                //All requests involving running code will be redirected to a specific server/set of servers
+                //All requests involving payments will be redirected to a specific server/set of servers
+
+                //Useful because if they want to deploy a big change to their code execution engine
+                //The deployment will only affect the servers handling the code execution 
+
+                //The requests involving payment will still route to their specific server/set of servers
+
+                //Also, if code execution server starts dying, the other services on the website will remain unaffected
+
+            //Thus, there are alot of server-selection strategies that your LB can use 
+
+            //You need to pick according to your use case
+            //When you are designing your system, you may want to use multiple load balancers that use different server selection strategies
+
+            //e.g. different server selections strats
+                //IP address server selection             Round-Robin 
+                //        |                                  | 
+                //Clients -> Load Balancer -> Load Balancers -> Servers 
+
+
+            //LB's can get overloaded as well, so you can have multiple load balancers in one layer as well, to they can redistribute requests amongst themselves as well
+                // clients -> load balancers -> load balancers -> servers
+
+            //LBs are critical for large-scale systems
+            //You will most likely be using them in your systems design interviews
