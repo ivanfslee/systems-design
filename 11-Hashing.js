@@ -67,11 +67,49 @@
 
                 //Ideally you want the Load Balancer to reroute the clients request to the server that has cached the clients request
 
-        //Hashing to the rescue 6:00
+        //Hashing to the rescue
+            //With hashing we can hash the requests that come into load balancer
+            //Then, based on the hash, we can bucket the request according to the position of the servers
 
+            //In this example:
 
+                //C1                       
+                //C2 
+                //    -> Load Balancer -> Server A, B, C, D
+                //C3
+                //C4
 
+                //We have 4 clients, 1 load balancer, 4 servers (A, B, C, D)
+                //We will hash the client's names (C1, C2, C3, C4)
+                //Our objective is to reroute all requests to the same server
 
+                //After we pass the client's names into hashing function we get this:
+                    //C1 -> 11
+                    //C2 -> 12
+                    //C3 -> 13
+                    //C4 -> 14
+                
+                //Hash function transforms arbirtary data into fixed-size value, typically an integer value
 
+                //We mod the hashed value by the total number of servers (4)
+                    //11 % 4 (the number of servers) 
 
+                    // 11 % 4 -> 3
+                    // 12 % 4 -> 0
+                    // 13 % 4 -> 1
+                    // 14 % 4 -> 2
 
+                    //Now, we can map those modded values to each of the 4 servers we have
+
+                    //C1 -> Server 3 -> D
+                    //C2 -> Server 0 -> A
+                    //C3 -> Server 1 -> B
+                    //C4 -> Server 2 -> C
+
+                    //So, all of Client 1's requests will we rerouted to Server D
+                    //Client 2's requests routed to Server A
+                    //Client 3 routed to Server B
+                    //Client 4 routed to Server C
+
+                    //Note: When using a hashing function, important that the function has 'uniformity'
+                        //Where the 10:09
