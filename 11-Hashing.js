@@ -145,3 +145,38 @@
                     
                     //So we can see that when we mod by a different number, our values are different
                     //which means the servers the client is routed to is different 
+
+                    //Which means that the in-memory caches will all be incorrect as well
+                    //Our previous cache hits will be cache misses
+
+                    //So our strategy of hashing client names and modulo by the number of servers 
+                    //is not a good strategy because servers may go down
+                    //or additional servers may go up
+                    //which nullifies any in-memory caches we may have had.
+                    //These in-memory caches arent nearly as useful because the same client requests wont route to the same servers with the caches
+
+                //So how do we address this?
+                //What do we do when we add or remove a server?
+                    //Solution is to use:
+                        //Consistent Hashing
+                        //Rendezvous Hashing 
+
+//Consistent Hashing Strategy - 17
+    //Imagine servers places on a circle in an evenly distributed way
+
+        //Consistent Hashing:
+        //A type of hashing that minimizes the number of keys that need to be remapped when a hash 
+        //table gets resized
+
+        //Often used by load balancers to distribute traffic to servers
+        //It minimizes the number of requests that get forwared to different servers
+        //when new servers are added or when existing servers are brought down
+
+
+//Rendezvous Hashing
+                
+
+
+
+
+
