@@ -89,7 +89,7 @@
                     //C3 -> 13
                     //C4 -> 14
                 
-                //Hash function transforms arbirtary data into fixed-size value, typically an integer value
+                //Hash function transforms arbitrary data into fixed-size value, typically an integer value
 
                 //We mod the hashed value by the total number of servers (4)
                     //11 % 4 (the number of servers) 
@@ -112,4 +112,36 @@
                     //Client 4 routed to Server C
 
                     //Note: When using a hashing function, important that the function has 'uniformity'
-                        //Where the 10:09
+                        //Where the hash outputs evenly distributed data values 
+                        //For example, we have 4 servers and 8 clients. A good hashing algorithm 
+                        //would output values for each client such that each server gets routed 2 clients each
+                        //In practice, you don't write your own hashing algos
+                        //but use industry grade ones such as:
+                            //SHA-1 hashing algo
+                            //MD5 hashing algo
+                            //https://en.wikipedia.org/wiki/List_of_hash_functions
+                
+                //Using hashing, we can evenly distribute the cached results in our servers
+                //and route clients to their appropriate server and maximize cache hits
+
+                //Another Problem:
+                    //We are dealing with a large scale system
+                    //Maybe requests increase
+                    //And a server dies
+                    //or we need to add a server, server E, the 5th server
+
+                    //We can no longer modulo by number 4 because now we have 5 servers 
+                    //If we keep on modding by 4, the incoming client requests will always
+                    //only go to Server A, B, C, D and never to E
+                
+                //So if we add a 5th server, we have to modulo by 5 
+
+                    //After we pass the client's names into hashing function we get this:
+                        //C1 -> 11 -> 11 % 5 = 1 (when mod by 4 = 3)
+                        //C2 -> 12 -> 12 % 5 = 2 (when mod by 4 = 0)
+                        //C3 -> 13 -> 13 % 5 = 3 (when mod by 4 = 1)
+                        //C4 -> 14 -> 14 % 5 = 4 (when mod by 4 = 2)
+                        //C5 -> 15 -> 15 % 5 = 0 (when mod by 4 = 3)
+                    
+                    //So we can see that when we mod by a different number, our values are different
+                    //which means the servers the client is routed to is different 
