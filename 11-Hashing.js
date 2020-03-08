@@ -161,8 +161,7 @@
                         //Consistent Hashing
                         //Rendezvous Hashing 
 
-//Consistent Hashing Strategy - 17
-    //Imagine servers places on a circle in an evenly distributed way
+//Consistent Hashing Strategy 
 
         //Consistent Hashing:
         //A type of hashing that minimizes the number of keys that need to be remapped when a hash 
@@ -172,11 +171,42 @@
         //It minimizes the number of requests that get forwared to different servers
         //when new servers are added or when existing servers are brought down
 
+    //Imagine servers places on a circle in an evenly distributed way
+    //The servers are passed through a hashing function and based on that are placed on a circle in different positions
+    //If the hashing function is good and results in uniformity, the servers will be evenly distributed along the circle
+
+    //Then you take the 4 clients and hash them (could be ip address, the request header, etc)
+    //The specific thing being hashed is not important here
+    //The point is that the clients are hashed and placed at different points on the circle as well
+
+    //So how to determine how to route the client requests?
+        //From each client on the circle, move clockwise (or counter clockwise) until you reach a server
+        //That server is the server that the load balancer will route the client's request to
+
+    //What happens if a server dies?
+        //The client routed to the dead server, will then instead be redirected to the next server in the circle
+    
+    //What happens if we add a server?
+        //Clients closer to it in a clockwise fashion will be routed to this new added server
+
+    //With this system of arranging clients and servers on a circle
+    //When we add or remove servers 
+
+    //We maintain MOST of the previous mapping of client and server. (only a few of the mappings change)
+    //That is, it preserves most of the mapping of a particular client to the server that has its corresponding cached request
+
+    //That is the advantage of using 'Consistent Hashing'
+        //Maintains hashes and their target buckets
+    
+    //Another thing you can do with consistent hashing/circle concept:
+        //Achieve even more even distribution? 
+            //Maybe alot of your requests hash to predominantly one side of the circle
+            //So that the circle is not evenly distributed and is lop-sided
+
+            //You can pass all of your servers through multiple hashing functions
+            //What results is that your servers will be in multiple spots on the circle
+            //That is, your servers will be in more than one spot on the circle
+            //23
+
 
 //Rendezvous Hashing
-                
-
-
-
-
-
