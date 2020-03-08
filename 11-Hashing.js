@@ -192,7 +192,7 @@
     //With this system of arranging clients and servers on a circle
     //When we add or remove servers 
 
-    //We maintain MOST of the previous mapping of client and server. (only a few of the mappings change)
+    //We maintain MOST (not all) of the previous mapping of client and server. (only a few of the mappings change)
     //That is, it preserves most of the mapping of a particular client to the server that has its corresponding cached request
 
     //That is the advantage of using 'Consistent Hashing'
@@ -206,7 +206,39 @@
             //You can pass all of your servers through multiple hashing functions
             //What results is that your servers will be in multiple spots on the circle
             //That is, your servers will be in more than one spot on the circle
-            //23
+            
+            //If one of your servers is more powerful than the others
+            //You could hash that powerful server multiple times for it to appear multiple places on the server
+            //Which results in that server appearing in multiple spots on the circle
+            //Which would give that server a higher likelihood of resolving requests to it
+            //That is, more clients will have access to that server
 
+//Rendezvous Hashing Strategy
+    //A type of hashing also coined 'highest random weight' hashing
+    //Allows for minimal re-distribution of mappings 
+    //when a server goes down.
 
-//Rendezvous Hashing
+    //In a nutshell, the strategy involves ranking the servers for a particular client/request 
+    //And choosing the highest ranked server to take care of a request
+
+    //For a particular request, if the highest ranked server is removed, the request 
+    //will be fulfilled by the next highest ranked server
+
+    //Similarly to Consistent Hashing, Rendezvous Hashing Strategy preserves MOST of the server/client mapping
+    
+    //The point of both of these hashing strategies is to minimize the amount of changes of server/client mappings and 
+    //preserving as many client/server mappings
+
+//Summary:
+    //3 Hashing Strategies outlined here
+        //1. Naive Hashing Strategy where we modulo by the number of servers 
+            //not great in preserving client/server mappings
+            //If servers die or new servers added, this will result in lower cache hits
+        //2. Consistent Hashing Strat
+        //3. Rendezvous Hashing Strat
+        //Consistent and Rendezvous are fairly interchangible 
+        //They both pretty much do the same thing in terms of minimizing client/server remapping
+        //The important point is that those two strategies are way better than the Naive Hashing Strategy
+
+        //If your system is relying on some kind of in-memory caching, you will definitely want to implement
+        //some kind of hashing strategy
