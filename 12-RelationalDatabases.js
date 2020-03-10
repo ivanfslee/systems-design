@@ -95,5 +95,34 @@
         //A relational databse that uses a dialect of SQL called PostgreSQL
         //Provides ACID transactions
 
+//Storage video 
+    //100s of different databases that specialize in certain things 
+    //Hard to generalize/categorize them
 
+//One major db characteristic
+    //Structure imposed on the data stored in the db
+    //Relational Database vs. Non-Relational Databases
+    //Relational Database imposes on the data a tabular-like structure
+        //In other words, the data is stored in a table 
+        //table = 'relations'
+
+    //customer_name   processed_at  amount
+    //clement          2019-12-01     10
+    //antoine          2019-11-16    200
+    //simon            2020-02-02   9001
+
+    //each row is a payment/entity/record
+    //each column is a property of the entity
+    //relational databases keyword is 'structure'
+
+    //schema - definition of the structure of the relational db
+
+    //non-relational db - doesn't impose a structure on the data
     
+    //most (not all) relational db support SQL (Structured Query Language)
+        //Can perform powerful queries on the data of the SQL db
+
+
+
+
+
