@@ -76,11 +76,20 @@
                 //It will not be undone by a crash, power loss, or network partition
 
     //Database Index 
+        //A special auxiliary data structure that allows your db to perform certain queries much faster.
+        //Indexes can typically only exist to reference structured data, like data stored in relational databases.
+        //In practice, you create an index on one or multiple columns in your database to greatly speed up read 
+        //queries that you run very often, with the downside of slightly linger writes to your db
+        //since writes have to also take place in the relevant idnex.
 
     //Strong Consistency
+        //Strong Consistency usually refers to the consistency of ACID transactions, as opposed to Eventual Consistency
 
     //Eventual Consistency 
-        //
+        //A consistency model which is unlike Strong Consistency. 
+        //In this model, reads might return a view of the system that is stale. 
+        //An eventually consistency datastore will give guarantees that the state of teh database will eventually 
+        //reflect writes within a time period (could be 10 seconds, or minutes).
 
     //Postgres - A specific technology or product you can use in your systems
         //A relational databse that uses a dialect of SQL called PostgreSQL
