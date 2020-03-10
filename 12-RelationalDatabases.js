@@ -61,13 +61,19 @@
 
     //ACID Transaction
         //A type of database transaction that has four important properties
-            //Atomicity - 
+            //Atomicity - The operations that constitute the transaction will either 
+                //all succeed or all fail. There is no in-between state
 
-            //Consistency
+            //Consistency - The transaction cannot bring the database to an invalid state.
+                //After the transaction is committed or rolled back, the rules for each
+                //record will still apply, and all future transactions will see the
+                //effect of the transaction. Also named Strong Consistency.
 
-            //Isolation
+            //Isolation - The execution of multiple transactions concurrently will
+                //have the same effect as if they had been executed sequentially
 
-            //Durability
+            //Durability - Any committed transaction is written to non-volatile storage.
+                //It will not be undone by a crash, power loss, or network partition
 
     //Database Index 
 
