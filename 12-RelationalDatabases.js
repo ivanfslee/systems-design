@@ -121,6 +121,8 @@
     
     //most (not all) relational db support SQL (Structured Query Language)
         //Can perform powerful queries on the data of the relational db
+        //It is because of this that you would use a relational db over a non-relational db
+
         //Typically, SQL and relational db are used interchangably 
 
         //SQL as field can be complicated and contain alot of depth
@@ -137,11 +139,49 @@
         
         //When they went to query these events, they had a hard time querying even the simplest of events
 
-    //note: non-relational databases will typically have their own querying languages
-        //google cloud datastore query language did not support some queries that Clement needed to do
+        //note: non-relational databases will typically have their own querying languages
+            //google cloud datastore query language did not support some queries that Clement needed to do
     
-    //As a result of the limitations of google cloud datastore, they moved to PostGres
+        //As a result of the limitations of google cloud datastore, they moved to PostGres
 
+        //You may ask if you can use python to code some queries of the data
+        //To do this, you would have to load the data into memory.
+        //The problem is that with large-scale system, you may be dealing with terabytes of data
+        //Those terabytes will need to be loaded into memory which is difficult/impossible
 
+        //That is the power of SQL. 
+            //You can perform these queries directly in the database
+            //Without having to load the data into memory
+    
+    //SQL Database, must use ACID transactions
+        //ACID
+            //ACID transaction - an operation in a database that has 4 properties
+                //Atomicity - if an operation contains multiple suboperations
+                    //canonical example is a database transaction from one bank account to another bank account
+                        //This would involve 2 transactions
+                        //1 deduction from one account
+                        //1 addition to another account
+                    //if there are multiple suboperations, these operations in totality will be considered a unit
+                    //if there is any issue with any suboperation or the transaction, the entire transaction fails
+                    //Only if all sub operations succeed does the entire transaction succeed
+
+                    //So it is an all or nothing concept 
+
+                //Consistency - any transaction in the db will conform to and abide by all the rules in the db
+                    //any future transaction in the database will take into account any past transactions in the db
+                    //You can think about like there will be no stale transactions in the database
+
+                    //That is, one transaction will know about all the other transactions
+
+                //Isolation - multiple transactions can occur at the same time
+                    //but they will occur as if they had been done sequentially
+                    //like, they've been put in a queue and then executed one at a time
+
+                //Durability - when you make a txn in the db, the effects of the txn is permanent
+                    //another way to think about it is that data in the db 
+                    //is effectively stored on disk
+    
+    //Database Index - 16
+            
 
 
