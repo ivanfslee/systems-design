@@ -181,7 +181,30 @@
                     //another way to think about it is that data in the db 
                     //is effectively stored on disk
     
-    //Database Index - 16
+    //Database Index 
+        //Imagine you want to look for the name of the customer with the largest amount paid
+
+        //You would have to go through each item in the db (At first glance, this may seem like a O(N) linear time operation)
+
+        //If you are dealing with db with millions of rows of data, this operation will take a long time
+        //Especially if you are doing alot of these look ups as well
+
+        //Database Index may seem simple enough, but under the hood, they are quite complicated
+            //outside of the scope of this lecture
+            //Alot of different types 
+            //and ways they are implemented under the hood
+            //There are bitmap indexes , reverse indexes, etc
+
+        //We will have high level over view of database index 
+
+        //Database Index is an auxiliary data structure in the db
+            //It is optimized for fast searching on a specific attribute in a column
+            //Long story short, Database Index speeds up read queries on the db significantly
+        
+        //
+
+
+
             
 
 
