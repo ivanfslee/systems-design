@@ -120,8 +120,27 @@
     //non-relational db - doesn't impose a structure on the data
     
     //most (not all) relational db support SQL (Structured Query Language)
-        //Can perform powerful queries on the data of the SQL db
+        //Can perform powerful queries on the data of the relational db
+        //Typically, SQL and relational db are used interchangably 
 
+        //SQL as field can be complicated and contain alot of depth
+        //In the context of systems design interviews, you dont need to be an expert
+
+        //Because you can perform powerful queries, people will use relational db over non-relational db
+
+    //Early on algoexpert just started, they relied on google cloud datastore as one of their primary databases
+        //google cloud datastore is a noSQL database (non-relational database)
+        //as a result, they ran into alot of issues involving querying
+        //They were storing user events
+            //e.g. when user runs code on algo expert
+            //when user makes a payment 
+        
+        //When they went to query these events, they had a hard time querying even the simplest of events
+
+    //note: non-relational databases will typically have their own querying languages
+        //google cloud datastore query language did not support some queries that Clement needed to do
+    
+    //As a result of the limitations of google cloud datastore, they moved to PostGres
 
 
 
