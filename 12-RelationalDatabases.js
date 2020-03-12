@@ -201,7 +201,33 @@
             //It is optimized for fast searching on a specific attribute in a column
             //Long story short, Database Index speeds up read queries on the db significantly
         
-        //
+        //Why would a database index speed up your db searching alot?
+            //imagine the small table we have above
+            //Lets say we have the amounts column stored in an auxiliary data structure in SORTED order
+            //Each amount points to their respective rows in the database
+
+            //The analogy then is that the database index acts as a 'table of contents' for the database
+
+            //Where the contents are ordered in a way that make them easy to search through
+
+            //You can think of it like they point to the place where the main data is stored
+
+            //In this particular example, you can imagine that you can perform a binary search on the amounts database index
+            //to find the amount you are looking for, which would then point to the particular row in the database
+
+            //You would effectively make what would typically be a linear time operation into a log time or constant time operation
+
+            //The trade off for having a database index is that it is an auxiliary data structure
+            //which uses additional space and when you write write data into the table/db that has a database index
+            //you will be taking more time to write the data into the db AND the database index
+
+            //So your write operations will be a little slower and you will be using up more space
+            //but your read operations will be a lot faster 
+            
+
+
+
+
 
 
 
