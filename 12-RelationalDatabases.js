@@ -223,14 +223,22 @@
 
             //So your write operations will be a little slower and you will be using up more space
             //but your read operations will be a lot faster 
-            
 
+    //Summary:
+        //Key points are to know the difference between relational and non-relational db
+        //The power of SQL and database indexing 
+        //ACID transactions 
 
-
-
-
-
-
-            
-
-
+        //When you make decisions about what kind of db you use 
+        //DB selection is very important in systems design
+            //Algoexpert was using google cloud datastore
+            //There were many issues they ran into
+                //1. couldn't query what they wanted
+                //2. only has 'eventual consistency'
+                    //They would make changes to the db
+                    //but they wouldn't see those changes reflected in the db immediately
+                    //The data was sometimes stale. 
+                    //This went against ACID transactions properties
+                    //They really needed 'Strong Consistency'
+                    //They couldn't keep using Eventual consistency that google cloud datastore provided
+                    //Subequently they migrated their data to SQL
