@@ -85,4 +85,9 @@
         //Then you just wait for the cache to fill up again when the key-value store is restored
     
     //Some key-value stores may give you strong consistency, others may only give you eventual consistency
-        
+
+//A note on caching in our server versus key-value store caching in redis/some other key-value store
+    //In our caching video, the cache was being stored on the server
+    //Here, our cache is stored separately on a redis server
+    //So in the event that our server goes down, our cache would still be okay, because it is stored separately in redis
+    //Whereas in our caching video, if the server with the cache crashed, our cache would be gone
