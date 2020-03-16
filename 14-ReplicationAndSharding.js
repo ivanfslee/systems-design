@@ -103,4 +103,33 @@
     
     //Situation:
         //You have one main db
+        //Your system is serving millions of requests
+        //Your main db is getting overloaded, it cannot serve that many requests and is becomming a bottle neck
+        //DB's throughput is not high enough
+
+        //To solve this you can:
+            //1. scale vertically - make your db server beefier and upgrade it to handle more requests - but theres a limit to how much you can upgrade vertically
+            //2. scale horizontally - add more database servers. You could have multiple replicas. 
+                //The problem with multople replicas is What if you have alot of data?
+                //What if you are facebook and you have billions of users? That is alot of data that has to be replicated for each replica db you have
+                    //Thus, this solution might not be the most optimal way to do this
         
+        //Enter sharding - we can split up the data
+            //One part of the data can be stored in one db server, and another part of the data can be stored in another db server
+
+            //You split up your one database into smaller pieces
+
+            //You end up with increasing throughput and you also avoid duplicating large amounts of data
+
+        //How do you know HOW to split up the data?
+            //If you are using relational db:
+                //You can put some rows into one shard
+                //Some other rows into another shard
+                //If you have a db of users
+                //You can store users with names starting in A to M in one shard
+                //Then you can stores users with names N to Z in another shard
+
+                //Or you could split up by region
+                //If you had a db of users with their location
+                //you can store users from North America in one shard
+                //and you can store users from Asia in another shard
