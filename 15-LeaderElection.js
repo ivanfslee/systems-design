@@ -93,3 +93,35 @@
                         //The challenge is having a bunch of separate machines all knowing who the leader is 
                         //at any given time and all be capable of reelecting a new leader at any moment
                         //This is actually quite a challenge.
+
+                        //When you have multiple distributed machines that have a shared state
+                        //In this case, the state is who the leader is.
+                        //You never know what will happen with the network. What happens if there is a network error
+                        //and machines are no longer able to communicate with one another. 
+                        //The concept of leader election is non trivial
+
+                        //You need to have separate machines agree on something together
+                        //That is the real difficulty
+
+                        //The act of sharing some state and reaching an agreement is difficult
+
+                        //In order to achieve consensus, we need to use a 'consensus algorithm'
+                        
+                        //Consensus Algorithms
+                            //Math heavy
+                            //They allow multiple servers in a group or more broadly
+                            //multiple nodes in a cluster to reach consensus 
+                            //or to agree on some single data value
+
+                            //In the case of leader election, that value is who the leader is
+
+                            //There are alot of Consensus algos out there
+                                //Two consensus algos - Paxos & Raft
+                            
+                            //In the industry, you will never implement a consensus algorithm yourself
+                            //Because of that, Systems Expert won't go over how they work
+
+                            //How would you implement the algo then, in practice?
+                                //You use some 3rd party service, who themselves will use a consensus algorithm
+
+                    
