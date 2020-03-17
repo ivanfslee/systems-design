@@ -53,6 +53,43 @@
 
                 //3rd party service -> middle service  <- Database
 
-                //That middle service is in charge of communicating with the db
-                //figure out when a users subscription is up for renewal
+                //That middle service is in charge of communicating with the db (perhaps on a periodic basis),
+                    //figure out when a users subscription is up for renewal,
+                    //how much the user is to be charged
+                    //Then the middle service goes to the 3rd-party service (paypal or stripe)
+                    //and tell that 3rd-party service to charge the user
+                    
+                    //Problems with this:
+                        //The middle service is only one machine/server
+                        //What happens if that middle service fails?
+                        //In a large-scale system, we always have things failing 
+                        //The failure of the middle service means our entire payment system fails 
 
+                        //To address this, we can use redundancy
+                            //Instead of just one server in the middle service, 
+                            //we have 5 servers
+                            
+                        //By having 5 servers as the middle service, we introduce a new problem:
+                            //When one server in our middle service makes a request to the 3rd party service
+                            //The request is to tell paypal/stripe to charge the user
+                            //The problem is that we now have 5 servers in the middle service
+                            //We definitely only want to to the request one time
+                            //We don't want to duplicate that request 5 times
+
+                        //In comes Leader Election
+                            //If you have a group of machines that are in charge of doing the same thing
+                            //Instead of having all of them doing the same thing, it may not be something you want to be doing multiple times
+                            //Leader Election has the group of servers elect one of them as the 'leader'
+                            //And that server alone is responsible for doing the action that all of those servers are meant to do
+
+                            //Meanwhile, the other servers that are not the leader are on standby 
+                            //in case something happens to the leader
+                            //We will call the other servers the 'followers'
+                            //The leader will be doing the business logic
+                            //The followers wont be doing much
+
+                            //If something happens to the leader, one of the followers will become the new leader
+                        
+                        //The challenge is having a bunch of separate machines all knowing who the leader is 
+                        //at any given time and all be capable of reelecting a new leader at any moment
+                        //This is actually quite a challenge.
