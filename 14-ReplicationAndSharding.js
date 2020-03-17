@@ -133,3 +133,33 @@
                 //If you had a db of users with their location
                 //you can store users from North America in one shard
                 //and you can store users from Asia in another shard
+
+                //Sharding problems:
+                    //Certain shards may be accessed more than others and may lead to 'hotspots'
+                    //For example, if you sharded your customer database based on alphabetical order
+                    //There probably would be less customers with names that start with X, Y, Z 
+                    //Than with customers with letters A, B, C
+
+                    //Another example is if your sharding strategy is based on region
+                    //You have a USA shard that gets more use than Asia shard
+                    //USA shard may become a hotspot and get overloaded
+
+                //A reasonable way you could split up your data here is by hashing
+                //You could use a hashing function that guarantees uniformity, to determine what shard a piece of data will be written to and read from
+                //The caveat to that is that you will not want to change your hashing function 
+                //because you need reads and writes of a particular piece of data will always go back to the same shard
+                //That is, your mappings of key and shard need to stay consistent 
+
+                //Consistent hashing may be of use here. 
+                //If you are adding a new shard. 
+                //Consistent hashing would minimize the amount of data we have to migrate over to the new shard from a previous shard
+                    //Though, if a shard goes down, consistent hashing wouldn't really help 
+                    //Instead, if a shard goes down, replicas of the shard would be useful
+                
+            //Overall, if you are sharding, you can decide how to split up your data into different ways
+            //Depending on your use case, there are tradeoffs to how you shard 
+
+            //Sample structure:
+                //Client -> Application Server -> Reverse Proxy Server -> Shard
+                    //The reverse proxy server receives the request from the application server, which got a request from the client
+                    //The reverse proxy server contains the logic to find which shard contains the data that the client is looking for
