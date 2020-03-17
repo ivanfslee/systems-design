@@ -14,7 +14,7 @@
             //Sharding based on the type of data
                 //e.g. user data gets stored in one shard
                 //and payments data gets stored in another shard
-            //Sharding based on the hash of a column (only for structured data)
+            //Sharding based on the hash of a column (only for structured/relational db data)
 
     //Hot Spot
         //When distributing a workload across a set of servers
@@ -157,9 +157,18 @@
                     //Instead, if a shard goes down, replicas of the shard would be useful
                 
             //Overall, if you are sharding, you can decide how to split up your data into different ways
-            //Depending on your use case, there are tradeoffs to how you shard 
+            //Depending on your use case, there are tradeoffs to HOW you shard
 
             //Sample structure:
                 //Client -> Application Server -> Reverse Proxy Server -> Shard
                     //The reverse proxy server receives the request from the application server, which got a request from the client
                     //The reverse proxy server contains the logic to find which shard contains the data that the client is looking for
+
+            //16 min-29 min
+            //16 minutes into video a coding example is given. 
+            //Havent watched this part yet
+
+            //Summary:
+                //Replication and Sharding are great strategies to make a system more performant
+                //The sharding subfield is very complicated
+                //Fortunately, in systems design interviews, what is required about replication and sharding is a high-level overview
