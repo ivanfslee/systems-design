@@ -139,6 +139,23 @@
                                         //There aren't many databases, let alone, key-value stores that have both high availability and strong consistency
                                         
                                         //The way Etcd achieves these two qualities is by doing a leader election and consensus algorithm
-                                        //Etcd utilizes the Raft consensus algorithm
+                                            //Etcd utilizes the Raft consensus algorithm
 
-                                        //14:23
+                                            //Simply put, they will need multiple machines that will read and write to the key-value store that Etcd stores
+                                            //They also need to ensure that they have a single value of truth i.e. leader election
+                                            //for strong consistecy
+                                            //They will need one leader to take care of the writes to the key-value store
+                                            //The other machines are presumably for high availablity
+
+                        //We can use Etcd to implement our own implementation of leader election
+                            //Multiple servers communicate with Etcd key-value store
+                            //At any given time, we would have one key-value pair in the Etcd key-value store
+                            //That key-value pair would contain the value of who the leader was
+                                //The key could be 'leader' and the value is whoever the leader is
+                            //We know that Etcd has high availability and strong consistency
+                            //Thus, we know that the key-value pair in the Etcd is available and any machine in your cluster of machines
+                            //can read that value from Etcd
+
+                            //Thus, you got a simple implementation of leader election
+
+                        //Coding example 16:53
