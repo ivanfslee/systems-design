@@ -121,7 +121,24 @@
                             //In the industry, you will never implement a consensus algorithm yourself
                             //Because of that, Systems Expert won't go over how they work
 
-                            //How would you implement the algo then, in practice?
-                                //You use some 3rd party service, who themselves will use a consensus algorithm
+                            //How would you implement leader election then, in practice?
+                                //You use some 3rd party tools, who themselves will use a consensus algorithm like paxos and raft to implement leader election, under the hood
+                                    //e.g. zookeeper
+                                    //e.g. Etcd
+                                    //These tools typically aren't used solely for leader election
+                                    //But happen to allow you to implement leader election 
 
-                    
+                                    //anecdotally, until at leasat 2019, Uber used zookeeper to implement leader election
+                            
+                            //In the video, we will go over how to implement leader election using Etcd
+                                //Etcd - key-value store, aka, a database that allows you to store key-value pairs
+                                    //you can think of it like a hash table
+                                    //Etcd is highly available and strongly consistent
+                                        //strongly consistent - means you will always get the same value whenever you access a certain key
+
+                                        //There aren't many databases, let alone, key-value stores that have both high availability and strong consistency
+                                        
+                                        //The way Etcd achieves these two qualities is by doing a leader election and consensus algorithm
+                                        //Etcd utilizes the Raft consensus algorithm
+
+                                        //14:23
