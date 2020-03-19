@@ -31,3 +31,28 @@
     //Objective:
         //At any point we want to transfer this 5gb file to 1000 machines
         //So with a network throughput of 5 GBps, that would take 1000 seconds (16.6 minutes)
+
+        //16.6 minutes is kind of long for this type of operation. 
+        //Especially if we are doing this multiple times a day
+
+        //This will be a bottleneck in our system.
+        //That one machine serving the 5 gb file will be the source of major slowdown in our system
+
+    //Potential solution: Multiple servers serving up file
+        //We could have multiple machines (instead of 1 machine) serving up the 5 gb file
+        //Maybe we have 10 machines serving up the file to 1000 other machines 
+        //With 10 machines, that would increase our speed by ~10 
+
+        //And would bring our time down to 17 min/ 10 = 1.7 minutes
+
+        //Which is much better, but also, kind of slow depending on our use-case
+
+        //The problem with this is that we have to replicate that 5 gb file across 10 machines
+        //And this will need to happen multiple times a day 
+
+        //Imagine if we had 10,000 machines we had to propagate the file to
+        //Then we would need more than 10 machines to send the files 
+        //This design solution may not scale well
+
+    //Potential Solution: sharding the 5 gb file 
+        //
