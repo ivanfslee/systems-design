@@ -27,7 +27,7 @@
     //GBps = gigabytes per second
 
     //We are using a large companies data center that can support a throughput of 5 GBps
-    
+
     //Objective:
         //At any point we want to transfer this 5gb file to 1000 machines
         //So with a network throughput of 5 GBps, that would take 1000 seconds (16.6 minutes)
@@ -55,4 +55,30 @@
         //This design solution may not scale well
 
     //Potential Solution: sharding the 5 gb file 
-        //
+        //Some of the files live in one machine, 
+        //other files live on the other machines
+
+        //Each of the machines has a part of the 5 gb file
+
+        //With this, you will run into the same problem
+        //The thousands of machines will need to get the same file from a particular machine
+        //which would serve as a bottleneck
+
+    //Potential Solution: Peer to Peer Network
+
+        //Situation: 1 machine with a 5 gb file
+            //The machine needs to send this to thousands of other machines (peers)
+            
+            //We break up the 5 gb file into very small pieces 
+
+            //We send these pieces to the peers
+
+            //And have the peers get the pieces they need from each other 
+
+            //And let the peers build up the total 5 gb file
+        
+        //Detailed situation:
+            //We break up our 5 gb file into 1000, 5 megabyte (MB) files
+
+
+        
