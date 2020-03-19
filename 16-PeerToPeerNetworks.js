@@ -30,4 +30,4 @@
     
     //Objective:
         //At any point we want to transfer this 5gb file to 1000 machines
-        //So with a network throughput of 5 GBps, that would take 1000 seconds
+        //So with a network throughput of 5 GBps, that would take 1000 seconds (16.6 minutes)
