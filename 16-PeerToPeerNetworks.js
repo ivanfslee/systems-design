@@ -78,7 +78,16 @@
             //And let the peers build up the total 5 gb file
         
         //Detailed situation:
-            //We break up our 5 gb file into 1000, 5 megabyte (MB) files
+            //We break up our 5 gb file into 1,000, 5 megabyte (MB) files
+            //We have 1000 peers and 1000 files
+            //We will send 1 5MB file to each peer
+            //This would take 1 second (because our throughput is 5 GBps and we are sending 1000 5MB files to 1000 peers)
 
+            //Now, a single peer has one of 1000 pieces
+            //The peer will need to talk to 999 other peers for the other 999 pieces
+            //How long would it take a single peer to do? 
+                //0.999 seconds 
+                // (1 sec / 1000) * 999 peers = .999 seconds 
+                //12:49
 
         
