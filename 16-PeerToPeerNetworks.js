@@ -86,8 +86,22 @@
             //Now, a single peer has one of 1000 pieces
             //The peer will need to talk to 999 other peers for the other 999 pieces
             //How long would it take a single peer to do? 
-                //0.999 seconds 
+                //0.999 seconds total!!
                 // (1 sec / 1000) * 999 peers = .999 seconds 
                 //12:49
 
-        
+                //Machines can talk to each other in pairs
+                //Essentially, you can parallelize 5 mb transfers 
+
+                //Simple/Naive Solution:
+                    //Compared to our single machine sending to each 1000 peers
+
+                //P2P solution:
+                    //In our p2p network solution, we have a bunch of communication happen at once
+
+                //Given our network throughput of 5 GBps
+                //That means to send a single 5 mb file takes .001 seconds
+
+                //15:44
+
+
