@@ -102,6 +102,20 @@
                 //Given our network throughput of 5 GBps
                 //That means to send a single 5 mb file takes .001 seconds
 
-                //15:44
+                //15:44 - sequence demonstrating why/how the p2p network is way faster than single machine serving the file
+                    //to one machine at a time
 
+                //For p2p to work properly peers need to know what peers to talk to next
+                    //peer discovery - peer knows which peer to look to next 
+                    //peer selection -
+                    //ways the peers know which peers to talk to next and trasfer their data next
 
+                //2 primary ways
+                    //1. central database - a machine that orchestrates the p2p network and knows
+                        //at all times or can figure out at any time what peer a peer should talk to next
+                    
+                        //So the central database will tell a peer you should give some of your data to this peer
+
+                        //central database is known as a 'tracker'
+
+                    //2. gossip protocol/epidemic protocol
