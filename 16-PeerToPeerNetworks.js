@@ -119,3 +119,36 @@
                         //central database is known as a 'tracker'
 
                     //2. gossip protocol/epidemic protocol
+                        //the peers recreate gossip/epidemic spreads
+                        //Instead of having the tracker dictate who the peer should talk to
+                        //The peers will talk amongst themselves and figure it out themselves
+                        
+                        //Every peer has information mapping other peers and what pieces of data the other peers have
+                        //So the peer will just relay that information to another peer in order to spread the data
+
+                        //A particular peer might have a hash table that maps its own ip address and data it has
+                        //as well as ip addresses of other peers and data those peers are known to have 
+
+                        //This type of hash table is known as a 'distributed hash table' (DHT)
+
+                        //P2P networks often operate by having a DHT of what peers hold what pieces of data
+
+                    //When 5 gb file gets split into 1000, 5 mb files, each chunk of data gets numbered
+                    //Any other machine is able to piece those chunks together to create the full file
+            
+//Kraken - P2P network created at uber 
+    //Accomplishes task of distributing 20,000  100 MB to 1 GB sized files in under 30 seconds
+
+//Take home point of P2P network
+    //Because of all the connections you have established between all the peers communicating with each other
+    //instead of having them all converge onto one single machine 
+
+//Torrenting
+    //One machine as a large file, split up into smaller pieces
+    //Network of peers work together to obtain all the missing pieces they need
+    //The main machine doesn't need to send the full file to each peer
+    //All the main machine needs to do is get all the chunks out into the network of peers
+    //and the peers will download those pieces from each other
+
+
+
