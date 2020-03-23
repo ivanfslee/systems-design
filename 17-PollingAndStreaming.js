@@ -131,6 +131,13 @@
                 //You are likely going to use streaming
             
                 //If you need data updated not too frequently
-                    //e.g. every 20 seconds
+                    //e.g. every 20 seconds/ 4 minutes
                     //Polling might be useful
-        //11:24
+
+                    //e.g. stock price dashboard to give you a snapshot (not trading) would use polling
+
+                    //e.g. If you want to trade stocks, you probably want streaming
+
+                    //e.g. Temperature reading would probably use polling
+                    
+        //12:49 Code example of chat app using both polling and streaming
