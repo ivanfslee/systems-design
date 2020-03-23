@@ -37,4 +37,32 @@
         //Polling
         //Streaming
     
-    //Polling - 
+    //Polling - client issues a request for data it wants on a recurring basis
+        //following some set interval of time
+        //The server then sends back a response
+
+        //Clients -> every X seconds -> servers
+        //        <-                 <-
+        
+        //You could use this with the temperature use case
+        //Client can issue a request to the server every 30 seconds to get the temperature
+
+        //Limitations of Polling:
+            //Chatting will not work with polling
+            //If you send a message to someone or someone wants to send a message to you
+            //You want to be able to receive the message right away
+            //You need the instantaneous aspect for chatting 
+
+            //So polling would not be a use case for chatting implementation
+            //One possibility is if you use polling with a very very short time interval like 0.5 seconds
+
+            //The tradeoff is of having alot of load on your servers
+
+            //You might poll every 0.1 second (10 times a second)
+
+            //If you want to scale this and have millions of users, 
+            //with each user polling 10 times a second, that would
+            //be millions of requests per second
+            //which is alot of load for your servers
+            
+    //Streaming - instead of having your client repeatedly 
