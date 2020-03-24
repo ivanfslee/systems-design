@@ -28,7 +28,7 @@
 //A simple part of systems design but often overlooked
 //Most large scale distributed systems will rely on configurations
 
-//What is config
+//What is configuration?
     //A set of parameters/ constants that your system or application will use
     //But instead of having these constants being embedded in your code
     //You will write/configure them in a seemingly isolated file
@@ -89,5 +89,22 @@
 
 //Two primary types of configuration
     //1. Static configuration
+        //Config that is bundled/packaged with your application code
+        //If there are any changes to the config file
+        //The entire application will have to go under a code review (typically with coworkers/peers) and will have to be redeployed
+
+        //If anything breaks after the config change, you will have to fix it
+
+        //Static config is safer in that, any changes will undergo thorough testing
+
+        //Downside is that static config changes are slower to implement because you have to go through and test your application
+            //and redeploy it afterwards, which is a timeconsuming process
+
+            //It takes a bit longer to see any changes in config implemented in your application
+        
 
     //2. Dynamic configuration
+        //Config that is completely separated from your application
+
+        //This means you can change your config at a moments notice
+        //And your config will take effect immediately
