@@ -108,3 +108,43 @@
 
         //This means you can change your config at a moments notice
         //And your config will take effect immediately
+
+        //Config will need to be backed by some kind of database that your application/system
+            //will be querying to see what the current config is
+        
+        //Dynamic config provides a lot of flexibility
+
+        //You can build a UI on top of your configuration
+            //Allows you and your team to implement changes to your config with a click of a button on the UI
+            //You wouldnt have to redeploy your entire application to see the changes in the config take effect
+
+        //Pros - changes and see their effect/impact quickly
+            //You can make and implement changes quickly
+        
+        //Cons - 
+            //no tests
+            //might be bad for your system as a whole
+
+            //Large corporations will use dynamic configs, because they are alot of benefits
+            //But they will build around it to make up for some of its deficits. 
+
+            //You may build certain access controls to change the config
+                //So that only certain individuals have access and are able to change it
+            
+            //You may build deployment systems around configurations
+                //e.g. google - certain services used dynamic configs
+                    //When making changes, not only would you go through a code review
+                    //and you had to have access (you had to own the particular feature)
+
+                    //The configuration would redeploy every 4 hours or so
+                    //But the entire application would redeploy twice a week
+
+                    //So you can make the config changes and see the results quickly
+
+                    //Google also had it so that the changes might only roll out to a small percentage of users
+                    //Thus, you can more safely roll out changes
+
+                    //Dynamic configs requires great responsibility
+                        //But you can build other complex systems around it to make up for its faults
+                        //and to safeguard against those great risks/responsibilities
+
