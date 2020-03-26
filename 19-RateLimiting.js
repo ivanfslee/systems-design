@@ -42,3 +42,9 @@
         //Redis is also often used to implement rate limiting.
 
         //https://redis.io/
+
+//Rate Limiting
+    //Rate limiting has certain Security and Performance ramifications
+
+    //Setting some type of threshold on certain operations
+    //Limiting the amount of operations that can be performed in a given amount of time
