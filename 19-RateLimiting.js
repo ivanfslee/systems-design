@@ -63,4 +63,42 @@
 
         //DoS - denial of service attack
             //flooding a system with a bunch of traffic
-            
+            //The system cant handle it 
+            //System doesn't have enough throughput to handle all that traffic
+
+            //Rate limiting can prevent that from happening
+                //Rate limiting will protect you from getting flooded with requests
+
+                //Past a certain threshold, the server won't process the request and will
+                //just return errors
+        
+    //Code Execution on Algo Expert:
+        //They have some rate limiting in place to prevent users from spamming the code execution engine
+        //They dont want people to abuse their system
+    
+    //Other use cases:
+        //Issuing requests to get a web page , is also an opportunity to rate limit
+
+    //You can rate limit based on certain parameters:
+        //Rate limit a particular users 
+
+        //Rate limit via ip address
+
+        //Rate limit via region 
+
+        //Rate limit via the number of requests - 
+            //e.g. we don't want our server processing more than 10,000 requests
+                //any more than that and we will return errors
+
+    //If your system becomes the victim of a DDoS attack:
+        //rate limiting may not solve your problem
+        //Things get a lot more complicated
+
+        //DDos has a bunch of different machines that might not be identifiable as 
+            //part of the same organization/group
+
+            //and have all those machines inundate your machine with traffic
+        
+        //It becomes much harder to rate limit
+    
+    //6:23 coding example
