@@ -46,5 +46,21 @@
 //Rate Limiting
     //Rate limiting has certain Security and Performance ramifications
 
-    //Setting some type of threshold on certain operations
+    //Setting some type of threshold on certain operations past which, these operations will return errors
     //Limiting the amount of operations that can be performed in a given amount of time
+
+    //Simple system example:
+        //client -> server -> database
+        //I only want to allow 2 requests per second from the client
+
+        //On the third request within 10 seconds, server will return an error
+        //If client keeps on sending a request within 10 sec, 
+        //server will return error
+
+    //The importance of rate limiting:
+        //Without rate limiting, you run the risk of your system being brought down
+        //due to malicious actors
+
+        //DoS - denial of service attack
+            //flooding a system with a bunch of traffic
+            
