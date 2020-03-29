@@ -95,3 +95,74 @@
 
         //by making sure you design your system to gather meaningful metrics 
         //and that you have tools to monitor those metrics
+
+        // As algoexpert grows, you may get more and more users
+
+        //Are users getting more and more errors?
+
+        //Are users getting latency issues?
+
+        //Sales over time?
+
+        //What authentication service are your users using?
+
+        //Facebook auth/google auth/email auth most popular?
+
+        //These analytics will give you insights in maintaining and growing the platform
+
+        //In the context of systems design and interviews
+            //Monitoring involves making sure, in your system you've got important monitoring
+                //in play to measure and see important metrics of your system
+
+        //Getting metrics
+            //Pre-built tool or something you implement yourself
+            //that scrapes your logs
+            //Provided that you have robust logs in place already
+            //and create metrics from those logs
+
+            //Keep in mind:
+                //You need logging information and you are limited by your logging info
+
+                //You need to make sure that your logs contain information that you want visibility over
+
+                //e.g. latency of specific requests in your system
+                    //So you need to make sure your logs keep track of latency of those requests
+                
+                //Another limitation:
+                    //If you ever decide to change your logs
+                    //You risk breaking your metrics/monitoring system
+
+            //Time series database
+                //Another way to gather metrics 
+                //Specialized database specifically tailored for data that is related to time/ data measured over time
+
+                //Popular time series db's include:
+                    //Prometheus (what they use on algoexpert)
+                    //graphite
+                    //influx db
+
+                //Use these specialized db and you have your servers send metrics periodically
+                    //to these databases
+                
+                //Then you query the time series database 
+                    //or use tools to make graphs from the time series data
+                
+            //Alerting:
+                //With monitoring in place
+                //You want this monitoring to be useful for you
+                
+                //If you are looking at error rates, you want to be alerted when these errors
+                    //are at a point that you deem unacceptable
+
+                //You can hook up your monitoring system to a chat app like slack
+
+                //e.g. the average run time of your last 100 code runs was 2 seconds
+                    //this is abnormal, check it out
+                
+                //Having a great alert system can go hand in hand with a good monitoring system
+
+            //In the beginning of your system when there is not much activity, logging and monitoring may not be as important
+
+            //But as your system gets larger and it grows, logging and monitoring becomes extremely important
+
+            //In the context of systems design interview, logging and monitoring are great tools to improve the polish of your system
